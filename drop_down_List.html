@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+        <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="angular.min.js"></script>
+       
+	   <script>
+            function CountryController($scope) {
+                $scope.countries = {
+                    'India': {
+                        'Maharashtra': ['Pune', 'Mumbai', 'Latur', 'Aurangabad'],
+                        'Delhi': ['Noida', 'Gurugram', 'Mehrauli'],  
+                    },
+                    'USA': {
+                      'California': ['Losangeles', 'San Fracisco', 'Fresno'],
+                      'Texas': ['Sunset', 'Hollywood']
+                    },
+                    'Australia': {
+                        'Queensland': ['Sydney','Melbourne','Perth'],
+                        'Tasmania': ['Gold cost','Newcastle']
+                    }
+                };
+            }
+        </script>
+        </head>
+        <body bgcolor="aliceblue"><center>
+        <div ng-app class="container">
+          <div ng-controller="CountryController">
+            <div class="form-group"><br><br><br><br><br><br><br><br>
+              <label class="control-label" for="Country">Country:</label>
+              <select class="form-control input-lg" id="country" ng-model="states" ng-options="country for (country, states) in countries">
+                <option value=''>Select</option>
+              </select>
+            </div><br><br>
+            <div class="form-group">
+              <label class="control-label" for="States">States:</label>
+              <select class="form-control input-lg" id="state" ng-disabled="!states" ng-model="cities" ng-options="state for (state,city) in states">
+                <option value=''>Select</option>
+              </select>
+            </div><br><br>
+            <div class="form-group">
+              <label class="control-label" for="City">City:</label>
+              <select class="form-control input-lg" id="city" ng-disabled="!cities || !states" ng-model="city" ng-options="city for city in cities">
+                <option value=''>Select</option>
+              </select>
+            </div>
+          </div>
+        </div></center>
+</body>
+</html>
